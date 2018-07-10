@@ -41,12 +41,12 @@ def firstlast():
 
 def poweroftwo():
     number = int(input("Enter a number:  "))
-    powers = 0
-    power = 1
-    while powers < number:
-        powers = power ** 2
-        power + 1
-        print (powers)
-    print (power)
+    exponent = 1
+    power = 0
+    while power < number:
+        power = 2 ** exponent
+        exponent = exponent + 1
+    exponent = exponent - 2
+    print (2 ** exponent)
 
 #poweroftwo()

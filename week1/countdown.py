@@ -5,5 +5,4 @@ def countdown():
         #sleep(1)
         print(number)
         number = number-1
-
 countdown()
