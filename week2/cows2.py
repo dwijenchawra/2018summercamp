@@ -1,7 +1,20 @@
+#BASICALLY COW PROBLEM EXCEPT ITS FINDING THE COW OSITIONS BASED ON THE TIME
+
+
+
+
+
+
+
+
+
+
+
+
 import collections
 
-position = []
 speed = []
+position = []
 
 
 def getinput():
@@ -45,7 +58,7 @@ def cow_eliminator():
     i = 0
     while i < length - 1:
         print("loop: " + str(i))
-        print("values: "+str(values))
+        print("values: " + str(values))
         if i == length - 2:
             print("if")
             del values[-1]
@@ -59,4 +72,27 @@ def cow_eliminator():
                 print(i)
                 length = len(values)
         i += 1
-print(cow_eliminator())
+#print(cow_eliminator())
+
+def cow_time(time):
+    speed = list(cowdict.values())
+    position = list(cowdict.keys())
+    print(speed)
+    speed.append("end")
+    length = len(speed)
+    i = 0
+    while i < length - 1:
+        if i == length - 2:
+            del speed[-1]
+            return(len(speed))
+        else:
+            if speed[i] * time + position[i] >= speed[i + 1] * time + position[i + 1]:
+                del speed[i]
+                del position[i]
+                i -= 1
+                print(i)
+                length = len(speed)
+        i += 1
+
+
+print("groups: " + str(cow_time()))

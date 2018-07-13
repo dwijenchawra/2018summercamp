@@ -2,8 +2,6 @@
 
 
 
-
-
 import collections
 
 position = []
@@ -42,27 +40,43 @@ def cows(x):
 
 cowdict = cows(getinput())
 
-def cow_eliminator():
-    values = list(cowdict.values())
-    print(cowdict)
-    values.append("end")
-    length = len(values)
-    print("loop begins here")
+speeds = list(cowdict.values())
+print(cowdict)
+
+
+def rightmax(list):
+    index = 0
+    maximum = 0
     i = 0
-    while i < length - 1:
-        print("loop: " + str(i))
-        print("values: "+str(values))
-        if i == length - 2:
-            print("if")
-            del values[-1]
-            return(len(values))
-        else:
-            print("else")
-            if values[i] > values[i + 1]:
-                del values[i]
-                i -= 1
-                print(len(values))
-                print(i)
-                length = len(values)
+    print("l"+str(list))
+    while i < len(list):
+        print("i: " + str(i))
+        if list[i] >= maximum:
+            maximum = list[i]
+            del list[i]
+            print("m"+str(maximum))
+            i -= 1
         i += 1
-print(cow_eliminator())
+    return list
+
+
+
+
+
+def cow_eliminator(values):
+    i = 0
+    newnumberoflanes = 0
+    while len(values) > 0:
+        values = rightmax(values)
+        i += 1
+    return i
+
+
+
+
+
+
+
+
+#   1 7 2 5 3 8 4 1 5 3 6 2
+print("Number of lanes: " + str(cow_eliminator(speeds)))
