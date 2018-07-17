@@ -11,7 +11,7 @@ class Quadrilateral:
         print( "I am a quadrilateral")
 
 x = Quadrilateral(1, 33, 57, 2)
-print(x.perimeter())
+#print(x.perimeter())
 
 
 class Rectangle(Quadrilateral):
@@ -23,18 +23,50 @@ class Rectangle(Quadrilateral):
         super().whatAmI()
         print("I am a rectangle")
 y = Rectangle(3, 4)
-print(y.area())
-print(y.perimeter())
+#print(y.area())
+#print(y.perimeter())
 
 class Square(Rectangle):
     def __init__(self,side):
         super().__init__(side,side)
 
 z = Square(20)
-print(z.area())
-print(z.perimeter())
+#print(z.area())
+#print(z.perimeter())
 
 
-x.whatAmI()
-y.whatAmI()
-z.whatAmI()
+#x.whatAmI()
+#y.whatAmI()
+#z.whatAmI()
+
+
+class SumOfNum:
+    def sayHello(self, num1=None, num2=None, num3=None):
+        if num3 is not None:
+            print(num1+num2+num3)
+        elif num2 is not None:
+            print(num1+num2)
+        elif num1 is not None:
+            print(num1)
+        else:
+            print("0")
+
+def foo():
+    return "foo"
+
+print(foo())
+
+def foo2():
+    sqr = Square(4)
+    return sqr
+
+x = input("input something")
+input = "oops"
+print(input)
+y = input("oops")
+
+obj = SumOfNum()
+obj.sayHello(3)
+obj.sayHello(3, 4)
+obj.sayHello(3, 4, 5)
+obj.sayHello()
