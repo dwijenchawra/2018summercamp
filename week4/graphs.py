@@ -95,22 +95,52 @@ def zipper(list1, list2):
 
 def shortestpath(nodes, edges, lengths, start, end):
     discoverednodes = []
-    discoverednodes.append(start)
+    discoverednodes.append([start, -1, -1])
     if connections2(nodes, edges, lengths, start, end):
         return shortestpath_exec(nodes, edges, lengths, start, end, start, 0, discoverednodes)
     else:
         return -1
 
 def shortestpath_exec(nodes, edges, lengths, start, end, currentnode, counter, discoverednodes):
+    decider = None
+    for i in discoverednodes:
+        if i[2] == 1:
+            decider = True
+        else:
+            decider = False
+            break
     if equals(discoverednodes, nodes) and counter == len(discoverednodes):
         return -1 #CHANGE TO VALUE OF END NODE
+    elif decider:
+        return "Success!"
     else:
+        for i in discoverednodes:
+            if i[0] == currentnode:
+                i[2] = 1
+                break
         temp = edgefinder2(currentnode, edges, lengthlist)
-        print(temp)
-        zipper(temp[0], temp[1])
+        print("temp" +str(temp))
+        results = zipper(temp[0], temp[1])
+        for i in results:
+            temp = [i[0], i[1], 0] # last term means expanded(1) or not(0).
+            if temp not in discoverednodes:
+                print("temp in loop"+str(temp))
+                discoverednodes.append(temp)
         # expanding b: bc ba be
         # update discovered nodes by adding newly discovered nodes and
         # updating new values for shortest path
+        print(discoverednodes)
+        for i in discoverednodes:
+            if i[2] == 0:
+                currentnode = i[0]
+                break
         return shortestpath_exec(nodes, edges, lengths, start, end, currentnode, counter+1, discoverednodes)
 
 print(shortestpath(nodeslist, edgelist, lengthlist, "b", "e"))
+
+
+
+
+
+#   ['a', 401, 1], ['b', -1, 1], ['b', 24, 0], ['b', 401, 0], ['c', 24, 0], ['c', 24, 1], ['d', 39, 0], ['a', 401, 0]
+#   the gist of what it spits out
