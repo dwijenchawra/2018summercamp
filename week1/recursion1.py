@@ -15,7 +15,7 @@ def factorial(x):
 def factorial_call(x):
     return factorial(x + 1)
 
-print(factorial_call(1000))
+#print(factorial_call(1000))
 
 #2 skipped
 
@@ -128,3 +128,15 @@ def gcf_call(x, y):
     return gcf(x, y, number)
 
 #print(gcf_call(20, 18))
+def print2():
+    num = 8
+    string = ""
+    for i in range(1, num):
+        for j in range(1, num):
+            if i <= (7 - j):
+                string += "1"
+            else:
+                string += str(i)
+        print(string)
+        string = ""
+print2()
